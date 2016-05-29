@@ -18,10 +18,15 @@ Changes in version 1.4 (OPENWARP - FIX WAVE FREQUENCY AND DIRECTION CRASH BUG):
 
     2. During the simulation, we don't run the solver if they was an error in the
     preprocessing step.
+
+Changes in version 1.5 (OPENWARP - PROVIDE A COMMAND LINE INTERFACE USING PYTHON)
+    1. Moved the construct_simulation_parameters and construct_postprocess_parameters
+    functions into this file in order to be shared. 
+
 """
-__author__ = "caoweiquan322, yedtoss"
+__author__ = "caoweiquan322, yedtoss, TCSASSEMBLER"
 __copyright__ = "Copyright (C) 2014-2016 TopCoder Inc. All rights reserved."
-__version__ = "1.4"
+__version__ = "1.5"
 
 import collections
 import uuid
@@ -141,6 +146,36 @@ def _clear_log():
             return num-1
 
     return num-1
+
+
+def construct_simulation_parameters(json_obj):
+        '''
+        Construct the simulation parameters from json object.
+
+        @param json_obj: the json object
+        @return: the parsed SimulationParameters object
+        '''
+        # Since this is a internal method. The parameters won't be logged.
+        para = SimulationParameters(**json_obj)
+        if para.floating_bodies is not None:
+            new_bodies = []
+            for body in para.floating_bodies:
+                new_bodies.append(FloatingBody(**body))
+            del para.floating_bodies[:]
+            para.floating_bodies.extend(new_bodies)
+        return para
+
+
+def construct_postprocess_parameters(json_obj):
+    '''
+    Construct the postprocess parameters from json object.
+
+    @param json_obj: the json object
+    @return: the parsed PostprocessingParameters object
+    '''
+    # Since this is a internal method. The parameters won't be logged.
+    para = PostprocessingParameters(**json_obj)
+    return para
 
 
 def apply_configuration(params):

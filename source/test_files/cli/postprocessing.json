@@ -1,0 +1,19 @@
+{
+  "irf": [
+    "1",
+    "0.1",
+    "10"
+  ],
+  "show_pressure": "0",
+  "kochin_function": [
+    "181",
+    "0",
+    "180"
+  ],
+  "free_surface_elevation": [
+    "1",
+    "2",
+    "2",
+    "1000"
+  ]
+}

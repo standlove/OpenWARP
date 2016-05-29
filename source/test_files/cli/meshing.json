@@ -1,0 +1,10 @@
+{
+  "infile": "/root/OpenWarp/test_files/mesh/FlapSingle.stl",
+  "outfile": "flap-meshed",
+  "maxh": "50",
+  "minh": "0.35",
+  "fineness": "0.4",
+  "grading": "0.1",
+  "tolerance": "0",
+  "usetolerance": "0"
+}
