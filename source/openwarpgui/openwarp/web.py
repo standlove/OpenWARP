@@ -18,7 +18,6 @@ Updated since version 1.3 (OPENWARP - FIX WAVE FREQUENCY AND DIRECTION CRASH BUG
 Changes in version 1.4 (OPENWARP - PROVIDE A COMMAND LINE INTERFACE USING PYTHON)
     1. It will call construct_simulation_parameters and construct_postprocess_parameters from services
     2. It will call determine_points_panels from helper
-
 """
 
 __author__ = "caoweiquan322, yedtoss, TCSASSEMBLER"

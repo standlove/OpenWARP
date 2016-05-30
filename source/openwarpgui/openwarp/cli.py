@@ -22,9 +22,14 @@ import cmd
 
 
 class OpenWarpCLI(cmd.Cmd):
-    """Open Warp Command Line Interface"""
+    """
+    Open Warp Command Line Interface
+    """
 
+    # the command prompt
     prompt = '> '
+
+    # the introduction
     intro = "OpenWarp CLI\n"
 
     def __init__(self):
@@ -40,12 +45,18 @@ class OpenWarpCLI(cmd.Cmd):
         self.start()
 
     def start(self):
+        '''
+        Start the queue listener
+        '''
         self.queue = multiprocessing.Queue(-1)
         # Solve this problem? http://stackoverflow.com/questions/25585518/python-logging-logutils-with-queuehandler-and-queuelistener
         self.ql = QueueListener(self.queue, *logging.getLogger().handlers)
         self.ql.start()
 
     def stop(self):
+        '''
+        Stop the queue listener
+        '''
         self.ql.stop()
     
     def do_m(self, json_file):
